@@ -1,14 +1,30 @@
 services:
   file-service:
-    build: ./file-service
+    build: .
     container_name: document-file-service
     restart: unless-stopped
     ports:
       - "3000:3000"
+    environment:
+      - DB_USER=${DB_USER:-n8n_login}
+      - DB_PASSWORD=${DB_PASSWORD:-YourStrongPassword123!}
+      - DB_SERVER=${DB_SERVER:-host.docker.internal}
+      - DB_NAME=${DB_NAME:-DocumentMetadata}
+      - STORAGE_ROOT=/data/document-storage
+      - NODE_ENV=${NODE_ENV:-production}
     volumes:
       - document_storage:/data/document-storage
+      - ./logs:/app/logs
     networks:
       - app_network
+    # If SQL Server is also in Docker, add dependency
+    # depends_on:
+    #   - sql-server
+
+networks:
+  app_network:
+    driver: bridge
 
 volumes:
   document_storage:
+    driver: local

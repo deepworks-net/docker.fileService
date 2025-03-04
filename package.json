@@ -1,0 +1,24 @@
+{
+    "name": "document-file-service",
+    "version": "1.0.0",
+    "description": "File management microservice for document storage system",
+    "main": "file-service.js",
+    "scripts": {
+      "start": "node file-service.js",
+      "dev": "nodemon file-service.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "multer": "^1.4.5-lts.1",
+      "morgan": "^1.10.0",
+      "cors": "^2.8.5",
+      "helmet": "^7.1.0",
+      "winston": "^3.11.0",
+      "mssql": "^10.0.1",
+      "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.2"
+    }
+  }
