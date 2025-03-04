@@ -1,5 +1,6 @@
 services:
   file-service:
+    image: deepworks/fileservice:latest
     build: .
     container_name: document-file-service
     restart: unless-stopped
