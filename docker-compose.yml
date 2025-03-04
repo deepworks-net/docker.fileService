@@ -1,0 +1,14 @@
+services:
+  file-service:
+    build: ./file-service
+    container_name: document-file-service
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - document_storage:/data/document-storage
+    networks:
+      - app_network
+
+volumes:
+  document_storage:
